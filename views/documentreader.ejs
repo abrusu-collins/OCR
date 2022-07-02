@@ -83,9 +83,13 @@
 
     <form class="form-group" method="post" action="/uploads" enctype="multipart/form-data">
         <input type="file" class="form-control form-control-lg mt-2 " id="textinput" name="myImage">
-        <button type="submit" class="btn btn-outline-primary mt-4" >Convert</button>
+        <button type="submit" class="btn btn-outline-primary mt-4" id="convert" >Convert</button>
 
     </form>
+
+    <div id="status"></div>
+    <div id="text"></div>
+    
     <h1 class="text-center mt-5 mb-5">Speech Controls</h1>
     <div class="range-group">
         <div id="speeddiv" class="mt-4">

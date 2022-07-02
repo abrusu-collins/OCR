@@ -37,12 +37,16 @@ app.post("/uploads", (req, res) => {
   upload(req, res, (err) => {
     fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
       if (err) return console.log("Error");
-      Tesseract.recognize(data, "eng", { logger: (m) => console.log(m) }).then(
-        ({ data: { text } }) => {
-          api.text = text;
-          console.log(text);
-        }
-      );
+      Tesseract.recognize(data, "eng", {
+        logger: (m) => {
+          api.progress = m.progress;
+          console.log(m);
+        },
+      }).then(({ data: { text } }) => {
+        api.text = text;
+
+        console.log(text);
+      });
     });
   });
 });
@@ -57,5 +61,3 @@ const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Listening on port : ${PORT}`);
 });
-
-
