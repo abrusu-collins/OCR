@@ -24,8 +24,18 @@ let ApiCall= function(){ fetch("http://localhost:5000/uploads").then(
 //event listener for convert
 convert.addEventListener("click", (e)=>{
  let inter =setInterval(()=>{ ApiCall(),10000});
-
- setInterval(()=>{stat.innerText =(dat.progress*100) <100?`${Math.trunc(dat.progress *100)} % `:"Done"},10090)
+// let statInner =(dat.progress*100) <100 ?
+// `<div>
+// <img  src="./animation.gif" alt="load"/>
+// <p>${Math.trunc(dat.progress *100)} %</p>
+//  </div>`
+// :"<p>Done</p>"
+ setInterval(()=>{stat.innerHTML = (dat.progress*100) <100 ?
+  `<div class="load">
+  <img  src="./animation.gif" alt="load"/>
+  <p>${Math.trunc(dat.progress *100)} %</p>
+   </div>`
+  :"<p>Done</p>"},10090)
 
 // setTimeout(()=>{
 //   clearInterval(inter);
