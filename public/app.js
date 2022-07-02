@@ -19,17 +19,25 @@ let dat;
 //fuunction for API call
 let ApiCall= function(){ fetch("http://localhost:5000/uploads").then(
   (response)=>{return response.json()}
-).then((data)=>{dat = data; console.log(dat.text)})}
+).then((data)=>{dat = data; console.log(dat.text)
+text.innerHTML= !(dat.text)?
+`<p>Text from image will appear here. Wait</p>`:
+`<div>
+<h2>Image Text</h2>
+<pre>${dat.text}</pre>
+
+</div>`
+
+})}
 
 //event listener for convert
 convert.addEventListener("click", (e)=>{
+  // e.preventDefault();
+  // if(input.value==="")
+  // {alert("No file specified")}
+  
  let inter =setInterval(()=>{ ApiCall(),10000});
-// let statInner =(dat.progress*100) <100 ?
-// `<div>
-// <img  src="./animation.gif" alt="load"/>
-// <p>${Math.trunc(dat.progress *100)} %</p>
-//  </div>`
-// :"<p>Done</p>"
+
  setInterval(()=>{stat.innerHTML = (dat.progress*100) <100 ?
   `<div class="load">
   <h3> Converting...</h3>
@@ -38,13 +46,12 @@ convert.addEventListener("click", (e)=>{
    </div>`
   :"<h3>Done!</h3>"},10090)
 
-// setTimeout(()=>{
-//   clearInterval(inter);
-// },60000)
 
 
 
-},true)
+
+},true);
+
 
 
 // //file reading
