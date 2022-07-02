@@ -5,7 +5,7 @@ const fs = require("fs");
 const multer = require("multer");
 const  Tesseract = require("tesseract.js");
 // const worker = TesseractWorker();
-
+app.use(express.static(__dirname + '/public'));
 
 // setting storage object
 const storage = multer.diskStorage({
@@ -25,7 +25,7 @@ app.set("view-engine","ejs");
 
 app.get("/",(req,res)=>{
 
-    res.render("index.ejs")
+    res.render("documentreader.ejs")
 });
 app.post("/uploads",(req, res)=>{
     upload(req, res, err =>{
