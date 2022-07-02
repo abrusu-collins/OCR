@@ -18,6 +18,8 @@ const storage = multer.diskStorage({
 });
 const upload =multer ({storage:storage}).single("myImage");
 
+let api= {}
+
 // ejs
 app.set("view-engine","ejs");
 
@@ -36,6 +38,7 @@ app.post("/uploads",(req, res)=>{
                 'eng',
                 { logger: m => console.log(m) }
               ).then(({ data: { text } }) => {
+                api.text= text;
                 console.log(text);
               })
         })
@@ -45,6 +48,7 @@ app.post("/uploads",(req, res)=>{
 
 app.get("/uploads",(req,res)=>{
 
+    res.send(api);
 
 
 });
