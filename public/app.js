@@ -32,10 +32,11 @@ convert.addEventListener("click", (e)=>{
 // :"<p>Done</p>"
  setInterval(()=>{stat.innerHTML = (dat.progress*100) <100 ?
   `<div class="load">
+  <h3> Converting...</h3>
   <img  src="./animation.gif" alt="load"/>
-  <p>${Math.trunc(dat.progress *100)} %</p>
+  <h3>${Math.trunc(dat.progress *100)} %</h3>
    </div>`
-  :"<p>Done</p>"},10090)
+  :"<h3>Done!</h3>"},10090)
 
 // setTimeout(()=>{
 //   clearInterval(inter);
