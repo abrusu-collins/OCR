@@ -78,12 +78,14 @@
           margin:auto;
         }
     </style>
-    <h1 class="text-center mt-4">Text File <span class="text-muted"> To </span> <span class="text-success">Speech</span></h1>
-    <img src="imago.png" alt="text-to-speech">
+    <h1 class="text-center mt-4 mb-5">Optical Character Recognition</h1>
+   
 
-    <div class="form-group">
-        <input type="file" class="form-control form-control-lg mt-2 " id="textinput">
-    </div>
+    <form class="form-group" method="post" action="/uploads" enctype="multipart/form-data">
+        <input type="file" class="form-control form-control-lg mt-2 " id="textinput" name="myImage">
+    </fom>
+    <button type="submit" class="btn btn-outline-primary mt-4" >Convert</button>
+    <h1 class="text-center mt-4 mb-5">Speech Controls</h1>
     <div class="range-group">
         <div id="speeddiv" class="mt-4">
             <h5>Speed</h5>
