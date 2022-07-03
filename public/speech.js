@@ -12,18 +12,19 @@ pitchgauge.addEventListener("input", pitchincrease, true);
 speedgauge.addEventListener("input", speedincrease, true);
 
 //file reading
-window.data= undefined;
-input.addEventListener('change', function() {
-			
-			var fr=new FileReader();
-			fr.onload=function(){
-         window.data=fr.result;
-				console.log(window.data)
-			}
-			
-			fr.readAsText(this.files[0]);
-		})
+let speechData;
 
+
+window.onload= function(){
+  fetch("http://localhost:5000/uploads")
+  .then((res) => {
+    return res.json();
+  })
+  .then((data) => {
+    speechData = data.text;
+  });
+
+}
 
 function speedincrease(e) {
   speedval.textContent = speedgauge.value;
@@ -52,55 +53,45 @@ if (synth.onvoiceschanged !== undefined) {
 
 function speak(e) {
   e.preventDefault();
-  
-  if (window.data === undefined) {
- alert("Choose a txt file from your device")
-  }
-else{
-  var newwindow= window.open('', '', 'width=500, height=500');
-  newwindow.document.write(`<pre>${window.data}</pre>`);
 
-  var utterThis = new SpeechSynthesisUtterance(window.data);
-  var selectedOption = select.selectedOptions[0].getAttribute("data-name");
-  for (var i = 0; i < voices.length; i++) {
-    if (voices[i].name === selectedOption) {
-      utterThis.voice = voices[i];
+  if (speechData === undefined) {
+    alert("Choose a txt file from your device");
+  } else {
+    var newwindow = window.open("", "", "width=500, height=500");
+    newwindow.document.write(`<pre>${speechData}</pre>`);
+
+    var utterThis = new SpeechSynthesisUtterance(speechData);
+    var selectedOption = select.selectedOptions[0].getAttribute("data-name");
+    for (var i = 0; i < voices.length; i++) {
+      if (voices[i].name === selectedOption) {
+        utterThis.voice = voices[i];
+      }
     }
+
+    utterThis.pitch = pitchgauge.value;
+    utterThis.rate = speedgauge.value;
+    synth.speak(utterThis);
+
+    input.blur();
   }
-
-  utterThis.pitch = pitchgauge.value;
-  utterThis.rate = speedgauge.value;
-  synth.speak(utterThis);
-
-  input.blur();
-
-  
-}
-
 }
 
 button.addEventListener("click", speak, true);
 
-
-
-
-
 //pause,resume and stop
 
-let a=document.getElementById("a")
-let b=document.getElementById("b")
-let c=document.getElementById("c")
+let a = document.getElementById("a");
+let b = document.getElementById("b");
+let c = document.getElementById("c");
 
-  a.addEventListener("click",(e)=>{
-    synth.pause();
-  })
+a.addEventListener("click", (e) => {
+  synth.pause();
+});
 
-  b.addEventListener("click",(e)=>{
-    synth.resume();
-  })
+b.addEventListener("click", (e) => {
+  synth.resume();
+});
 
-
- c.addEventListener("click",(e)=>{
-    synth.cancel();
-    
-  })
+c.addEventListener("click", (e) => {
+  synth.cancel();
+});
