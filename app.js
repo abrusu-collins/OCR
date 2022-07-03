@@ -29,8 +29,14 @@ app.set("view-engine", "ejs");
 //Routes
 //Home route
 app.get("/", (req, res) => {
-  res.render("documentreader.ejs");
+  res.render("ocr.ejs");
 });
+
+//Speech route
+app.get("/speech", (req, res) => {
+  res.render("speech.ejs");
+});
+
 
 // Make a post request, and process image
 app.post("/uploads", (req, res) => {

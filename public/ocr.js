@@ -35,8 +35,8 @@ convert.addEventListener("click", (e)=>{
   <h3>Done!</h3>
   
   <div class="externals">
-  <button type="button" onclick="x()" class="btn btn-primary btn-sm">Get PDF</button>
-  <button type="button" id="readtext" class="btn btn-primary btn-sm">Read Text</button>
+  <button type="button" onclick="PDFconversion()" class="btn btn-primary btn-sm">Get PDF</button>
+  <button type="button" id="readtext" class="btn btn-primary btn-sm">Speech</button>
  </div>
   
   
@@ -54,7 +54,7 @@ text.innerHTML=" ";
 },true);
 
 
-function x(){
+function PDFconversion(){
   var doc = new jsPDF()
 
   doc.text(dat.text, 10, 10)
