@@ -44,7 +44,10 @@ convert.addEventListener("click", (e)=>{
   <img  src="./animation.gif" alt="load"/>
   <h3>${Math.trunc(dat.progress *100)} %</h3>
    </div>`
-  :"<h3>Done!</h3>"},10090)
+  :`<div class="load"><h3>Done!</h3></div>`;
+stat.style.display="block";
+
+},10090)
 
 
 
