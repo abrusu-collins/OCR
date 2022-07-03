@@ -18,8 +18,9 @@ let ApiCall= function(){ fetch("http://localhost:5000/uploads").then(
 //event listener for convert
 convert.addEventListener("click", (e)=>{
   // e.preventDefault();
-  // if(input.value==="")
-  // {alert("No file specified")}
+
+ 
+    // e.preventDefault();
   text.innerHTML=`<h3>Wait a second...</h3>`
  let inter =setInterval(()=>{ ApiCall(),10000});
 
@@ -34,8 +35,8 @@ convert.addEventListener("click", (e)=>{
   <h3>Done!</h3>
   
   <div class="externals">
-  <button type="button" class="btn btn-primary btn-sm">Small button</button>
-  <button type="button" class="btn btn-primary btn-sm">Small button</button>
+  <button type="button" class="btn btn-primary btn-sm">Get PDF</button>
+  <button type="button" class="btn btn-primary btn-sm">Read Text</button>
  </div>
   
   
@@ -46,7 +47,10 @@ text.innerHTML=" ";
 
 },10090)
 
+var doc = new jsPDF()
 
+doc.text('Hello world!', 10, 10)
+doc.save('a4.pdf')
 
 
 

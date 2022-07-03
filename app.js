@@ -42,7 +42,7 @@ app.post("/uploads", (req, res) => {
           api.progress = m.progress;
           console.log(m);
         },
-      }).then(({ data: { text } }) => {
+      },{tessjs_create_pdf:"1"}).then(({ data: { text } }) => {
         api.text = text;
 
         console.log(text);
@@ -51,9 +51,16 @@ app.post("/uploads", (req, res) => {
   });
 });
 
-// API roue for generted text
+// route for api json
 app.get("/uploads", (req, res) => {
   res.send(api);
+});
+
+//route to download PDF
+
+app.get("/downloads", (req, res) => {
+  const file= `${__dirname}/tesseract.js-ocr-result.pdf`;
+  res.download(file);
 });
 
 // Port to listen on

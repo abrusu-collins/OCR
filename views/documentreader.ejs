@@ -104,11 +104,19 @@
       .externals{
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
+        
 
+      }
+      .externals button{
+        margin-right: 10px;
+      }
+      .h3{
+        color:#fcfeff;
       }
     </style>
     <h1 class="text-center mt-4 mb-5">Optical Character Recognition</h1>
-
+    <h3 class=" h3 text-center mt-4 mb-5">Chose an Image and Click on Convert</h3>
     <form
       class="form-group"
       method="post"
@@ -131,7 +139,7 @@
 
    
   
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
