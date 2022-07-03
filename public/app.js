@@ -35,8 +35,13 @@ convert.addEventListener("click", (e)=>{
   <h3>Done!</h3>
   
   <div class="externals">
-  <button type="button" class="btn btn-primary btn-sm">Get PDF</button>
-  <button type="button" class="btn btn-primary btn-sm">Read Text</button>
+  <button type="button" onclick= function(){
+    var doc = new jsPDF()
+
+    doc.text(${dat.text}, 10, 10)
+    doc.save('a4.pdf')
+  } class="btn btn-primary btn-sm">Get PDF</button>
+  <button type="button" id="readtext" class="btn btn-primary btn-sm">Read Text</button>
  </div>
   
   
@@ -47,10 +52,7 @@ text.innerHTML=" ";
 
 },10090)
 
-var doc = new jsPDF()
 
-doc.text('Hello world!', 10, 10)
-doc.save('a4.pdf')
 
 
 
