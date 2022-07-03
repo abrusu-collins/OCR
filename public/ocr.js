@@ -52,8 +52,7 @@ text.innerHTML=" ";
 },true);
 
 
-function PDFconversion(e){
-  e.preventDefault();
+function PDFconversion(){
   var doc = new jsPDF()
 
   doc.text(dat.text, 10, 10)
