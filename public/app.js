@@ -11,7 +11,7 @@ let dat;
 //fuunction for API call
 let ApiCall= function(){ fetch("http://localhost:5000/uploads").then(
   (response)=>{return response.json()}
-).then((data)=>{dat = data; console.log(dat)
+).then((data)=>{dat = data; 
 })}
 
 
@@ -35,12 +35,7 @@ convert.addEventListener("click", (e)=>{
   <h3>Done!</h3>
   
   <div class="externals">
-  <button type="button" onclick= function(){
-    var doc = new jsPDF()
-
-    doc.text(${dat.text}, 10, 10)
-    doc.save('a4.pdf')
-  } class="btn btn-primary btn-sm">Get PDF</button>
+  <button type="button" onclick="x()" class="btn btn-primary btn-sm">Get PDF</button>
   <button type="button" id="readtext" class="btn btn-primary btn-sm">Read Text</button>
  </div>
   
@@ -59,3 +54,9 @@ text.innerHTML=" ";
 },true);
 
 
+function x(){
+  var doc = new jsPDF()
+
+  doc.text(dat.text, 10, 10)
+  doc.save('Your_PDF.pdf')
+}
