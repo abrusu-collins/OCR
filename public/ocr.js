@@ -4,34 +4,39 @@ let convert = document.getElementById("convert");
 let stat = document.getElementById("status");
 let text = document.getElementById("text");
 
-
 // file conversion
 let dat;
 
 //fuunction for API call
-let ApiCall= function(){ fetch("http://localhost:5000/uploads").then(
-  (response)=>{return response.json()}
-).then((data)=>{dat = data; 
-})}
-
+let ApiCall = function () {
+  fetch("http://localhost:5000/uploads")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      dat = data;
+    });
+};
 
 //event listener for convert
-convert.addEventListener("click", (e)=>{
-  // e.preventDefault();
+convert.addEventListener(
+  "click",
+  (e) => {
+    text.innerHTML = `<h3>Wait a second...</h3>`;
+    let inter = setInterval(() => {
+      ApiCall(), 10000;
+    });
 
- 
-    // e.preventDefault();
-  text.innerHTML=`<h3>Wait a second...</h3>`
- let inter =setInterval(()=>{ ApiCall(),10000});
-
- setInterval(()=>{stat.innerHTML = !(dat.progress*100)?`<div class="load"><h3>Converting</h3></div>`  
- :  (dat.progress*100) <100 ?
-  `<div class="load">
+    setInterval(() => {
+      stat.innerHTML = !(dat.progress * 100)
+        ? `<div class="load"><h3>Converting</h3></div>`
+        : dat.progress * 100 < 100
+        ? `<div class="load">
   <h3> Converting...</h3>
   <img  src="./animation.gif" alt="load"/>
-  <h3>${Math.trunc(dat.progress *100)} %</h3>
+  <h3>${Math.trunc(dat.progress * 100)} %</h3>
    </div>`
-  :`<div class="load">
+        : `<div class="load">
   <h3>Done!</h3>
   
   <div class="externals">
@@ -40,21 +45,17 @@ convert.addEventListener("click", (e)=>{
  </div>
   
   </div>`;
-stat.style.display="flex";
-text.innerHTML=" ";
+      stat.style.display = "flex";
+      text.innerHTML = " ";
+    }, 10090);
+  },
+  true
+);
 
-},10090)
+//PDF conversion
+function PDFconversion() {
+  var doc = new jsPDF();
 
-
-
-
-
-},true);
-
-
-function PDFconversion(){
-  var doc = new jsPDF()
-
-  doc.text(dat.text, 10, 10)
-  doc.save('Your_PDF.pdf')
+  doc.text(dat.text, 10, 10);
+  doc.save("Your_PDF.pdf");
 }

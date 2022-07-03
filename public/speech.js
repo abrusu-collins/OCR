@@ -1,6 +1,5 @@
 //Selectors
 
-let input = document.getElementById("textinput");
 let select = document.getElementById("select");
 let button = document.getElementById("btn");
 let speedgauge = document.getElementById("speed");
