@@ -56,6 +56,23 @@ convert.addEventListener(
 function PDFconversion() {
   var doc = new jsPDF();
 
-  doc.text(dat.text, 10, 10);
-  doc.save("Your_PDF.pdf");
+
+
+
+
+
+
+  var inv = document.querySelector(".invinsible");
+  inv.textContent=`${dat.text}`;
+var specialElementHandlers = {
+    '#elementH': function (element, renderer) {
+        return true;
+    }
+};
+doc.fromHTML(inv, 15, 15, {
+    'width': "100",
+    'elementHandlers': specialElementHandlers
+});
+
+doc.save("Your_PDF.pdf");
 }
