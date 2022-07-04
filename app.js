@@ -36,7 +36,9 @@ app.get("/", (req, res) => {
 app.get("/speech", (req, res) => {
   res.render("speech.ejs");
 });
-
+app.get("*", (req,res)=>{
+  res.render("404.ejs");
+})
 // Make a post request, and process image
 app.post("/uploads", (req, res) => {
   upload(req, res, (err) => {
