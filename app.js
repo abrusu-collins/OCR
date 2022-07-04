@@ -73,6 +73,7 @@ app.get("/downloads", (req, res) => {
   const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
   res.download(file);
 });
+
 //404 route
 app.get("*", (req,res)=>{
   res.render("404.ejs");
