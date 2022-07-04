@@ -13,17 +13,15 @@ speedgauge.addEventListener("input", speedincrease, true);
 //file reading
 let speechData;
 
-
-window.onload= function(){
+window.onload = function () {
   fetch("http://localhost:5000/uploads")
-  .then((res) => {
-    return res.json();
-  })
-  .then((data) => {
-    speechData = data.text;
-  });
-
-}
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      speechData = data.text;
+    });
+};
 
 function speedincrease(e) {
   speedval.textContent = speedgauge.value;

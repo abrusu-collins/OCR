@@ -37,18 +37,22 @@ app.get("/speech", (req, res) => {
   res.render("speech.ejs");
 });
 
-
 // Make a post request, and process image
 app.post("/uploads", (req, res) => {
   upload(req, res, (err) => {
     fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
       if (err) return console.log("Error");
-      Tesseract.recognize(data, "eng", {
-        logger: (m) => {
-          api.progress = m.progress;
-          console.log(m);
+      Tesseract.recognize(
+        data,
+        "eng",
+        {
+          logger: (m) => {
+            api.progress = m.progress;
+            console.log(m);
+          },
         },
-      },{tessjs_create_pdf:"1"}).then(({ data: { text } }) => {
+        { tessjs_create_pdf: "1" }
+      ).then(({ data: { text } }) => {
         api.text = text;
 
         console.log(text);
@@ -65,7 +69,7 @@ app.get("/uploads", (req, res) => {
 //route to download PDF
 
 app.get("/downloads", (req, res) => {
-  const file= `${__dirname}/tesseract.js-ocr-result.pdf`;
+  const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
   res.download(file);
 });
 

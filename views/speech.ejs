@@ -1,122 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="bootstrap.min (1).css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="bootstrap.min (1).css" />
     <title>Text To Speech</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <style>
-        img {
-            width: 20%;
-            display: block;
-            margin: auto;
-            filter: opacity(0.5) drop-shadow(0 0 0 #32fbe2);
-        }
+      img {
+        width: 20%;
+        display: block;
+        margin: auto;
+        filter: opacity(0.5) drop-shadow(0 0 0 #32fbe2);
+      }
 
-        #textinput,
-        .range-group,
-        #select {
-            width: 40%;
-            margin: auto;
-            display: block;
-        }
+      #textinput,
+      .range-group,
+      #select {
+        width: 40%;
+        margin: auto;
+        display: block;
+      }
 
-        .btn {
-            display: block;
-            margin: auto;
-        }
+      .btn {
+        display: block;
+        margin: auto;
+      }
 
-        #speeddiv,
-        #pitchdiv {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-        }
+      #speeddiv,
+      #pitchdiv {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
 
-        .table {
-            width: 50%;
-            margin: auto;
-        }
+      .table {
+        width: 50%;
+        margin: auto;
+      }
 
-        #historyhead {
-            margin-top: 150px;
-        }
+      #historyhead {
+        margin-top: 150px;
+      }
 
-        #play {
-            background: #7162EC;
-            text-align: center;
-        }
+      #play {
+        background: #7162ec;
+        text-align: center;
+      }
 
-        #deleted {
-            background: #DC0C4C;
-            text-align: center;
-        }
+      #deleted {
+        background: #dc0c4c;
+        text-align: center;
+      }
 
-        #play:hover,
-        #deleted:hover {
-            cursor: pointer;
-        }
-        #no{
-            text-align: center;
-        }
-        tbody{
-            border-bottom:10px solid rgb(26, 9, 51);
-            
-        }
-        tr{
-            
-            justify-content: center;
-        }
-        #speakcontrol{
-            width:30%;
-          display: flex;
-          margin:auto;
-        }
+      #play:hover,
+      #deleted:hover {
+        cursor: pointer;
+      }
+      #no {
+        text-align: center;
+      }
+      tbody {
+        border-bottom: 10px solid rgb(26, 9, 51);
+      }
+      tr {
+        justify-content: center;
+      }
+      #speakcontrol {
+        width: 30%;
+        display: flex;
+        margin: auto;
+      }
 
-        .instruction{
-            text-align: center;
-            margin-top: 100px;
-            color:#fcfeff;
-        }
+      .instruction {
+        text-align: center;
+        margin-top: 100px;
+        color: #fcfeff;
+      }
     </style>
     <h1 class="text-center mt-4 text-success">Image To Speech</h1>
-    <h3 class="instruction">Text from image already loaded <br> Click on read to listen to the audio.</h3>
+    <h3 class="instruction">
+      Text from image already loaded <br />
+      Click on read to listen to the audio.
+    </h3>
 
-    
     <div class="range-group">
-        <div id="speeddiv" class="mt-4">
-            <h5>Speed</h5>
-            <h5 id="speedval">1.5</h5>
-        </div>
-        <input type="range" class="form-range" min="0" max="3" step="0.1" id="speed">
-        <div id="pitchdiv" class="mt-4">
-            <h5>Pitch</h5>
-            <h5 id="pitchval">1.5</h5>
-        </div>
-        <input type="range" class="form-range" min="0" max="3" step="0.1" id="pitch">
+      <div id="speeddiv" class="mt-4">
+        <h5>Speed</h5>
+        <h5 id="speedval">1.5</h5>
+      </div>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="3"
+        step="0.1"
+        id="speed"
+      />
+      <div id="pitchdiv" class="mt-4">
+        <h5>Pitch</h5>
+        <h5 id="pitchval">1.5</h5>
+      </div>
+      <input
+        type="range"
+        class="form-range"
+        min="0"
+        max="3"
+        step="0.1"
+        id="pitch"
+      />
     </div>
-    <select name="selector" class="form-select mt-4" id="select">
-
-    </select>
-    <button type="button" class="btn btn-outline-primary mt-4" id="btn">Read</button>
+    <select name="selector" class="form-select mt-4" id="select"></select>
+    <button type="button" class="btn btn-outline-primary mt-4" id="btn">
+      Read
+    </button>
 
     <div id="speakcontrol" class="mt-4">
-        
-    <button class="btn btn-outline-primary" id="a">pause</button>
-    <button class="btn btn-outline-primary" id="b">resume</button>
-    <button class="btn btn-outline-primary" id="c">stop</button>
-
+      <button class="btn btn-outline-primary" id="a">pause</button>
+      <button class="btn btn-outline-primary" id="b">resume</button>
+      <button class="btn btn-outline-primary" id="c">stop</button>
     </div>
-    
-
-
 
     <script src="speech.js"></script>
-</body>
-
+  </body>
 </html>

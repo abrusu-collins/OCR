@@ -56,23 +56,17 @@ convert.addEventListener(
 function PDFconversion() {
   var doc = new jsPDF();
 
-
-
-
-
-
-
   var inv = document.querySelector(".invinsible");
-  inv.textContent=`${dat.text}`;
-var specialElementHandlers = {
-    '#elementH': function (element, renderer) {
-        return true;
-    }
-};
-doc.fromHTML(inv, 15, 15, {
-    'width': "100",
-    'elementHandlers': specialElementHandlers
-});
+  inv.textContent = `${dat.text}`;
+  var specialElementHandlers = {
+    "#elementH": function (element, renderer) {
+      return true;
+    },
+  };
+  doc.fromHTML(inv, 15, 15, {
+    width: "100",
+    elementHandlers: specialElementHandlers,
+  });
 
-doc.save("Your_PDF.pdf");
+  doc.save("Your_PDF.pdf");
 }
