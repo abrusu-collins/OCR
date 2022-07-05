@@ -1,4 +1,3 @@
-//Selectors
 
 let input = document.getElementById("textinput");
 let select = document.getElementById("select");
@@ -12,15 +11,8 @@ let upload = document.getElementById("upload");
 let form = document.getElementById("form");
 
 
-
-
-
 pitchgauge.addEventListener("input", pitchincrease, true);
 speedgauge.addEventListener("input", speedincrease, true);
-
-//file reading
-
-
 
 
 function speedincrease(e) {
@@ -51,20 +43,13 @@ if (synth.onvoiceschanged !== undefined) {
 function speak(e) {
   e.preventDefault();
   
-
-
-
-
   fetch("http://localhost:5000/pdfconvert").then(
     (res)=>{
       return res.json()
     }
   ).then(
     (data)=>{
-      // return data.text;
-
-
-      
+  
   var newwindow= window.open('', '', 'width=500, height=500');
   newwindow.document.write(`<pre>${data.text}</pre>`);
 
@@ -87,13 +72,7 @@ function speak(e) {
   
 }
 
-
-
 button.addEventListener("click", speak, true);
-
-
-
-
 
 //pause,resume and stop
 
