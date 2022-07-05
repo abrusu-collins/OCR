@@ -1,15 +1,14 @@
-//importing modules
 const express = require("express");
 let app = express();
 const fs = require("fs");
 const multer = require("multer");
 const Tesseract = require("tesseract.js");
-const pdf = require('pdf-parse');
+const pdf = require("pdf-parse");
 
-// Using the public folder
 app.use(express.static(__dirname + "/public"));
+app.set("view-engine", "ejs");
 
-// setting storage object
+// setting storage object for image
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "./uploads");
@@ -19,35 +18,37 @@ const storage = multer.diskStorage({
   },
 });
 
-
-
-
-
-
-
-const sssss = multer({ dest: 'pdfuploads/' });
-const upload = multer({ storage: storage }).single("myImage");
-
-// empty object
-
+// empty object to store text taken off image
 let api = {};
 
-// ejs
-app.set("view-engine", "ejs");
+//setting storage for pdf uploads
+const pdfstorage = multer({ dest: "pdfuploads/" });
+const upload = multer({ storage: storage }).single("myImage");
+
+//empty object to store text taken off pdf
+let pdfobject ={}
 
 //Routes
-//Home route
 app.get("/", (req, res) => {
   res.render("ocr.ejs");
 });
 
-//Speech route
 app.get("/speech", (req, res) => {
   res.render("speech.ejs");
 });
 
+app.get("/pdfreader", (req, res) => {
+  res.render("pdfreader.ejs");
+});
 
-// Make a post request, and process image
+app.get("/uploads", (req, res) => {
+  res.send(api);
+});
+
+app.get("/pdfconvert", (req,res)=>{
+  res.send(pdfobject);
+})
+
 app.post("/uploads", (req, res) => {
   upload(req, res, (err) => {
     fs.readFile(`./uploads/${req.file.originalname}`, (err, data) => {
@@ -71,32 +72,19 @@ app.post("/uploads", (req, res) => {
   });
 });
 
-
-app.post('/pdfconvert', sssss.single('pdf'), function (req, res, next) {
-  // req.file is the `avatar` file
-  // req.body will hold the text fields, if there were any
-})
-
-
-// route for api json
-app.get("/uploads", (req, res) => {
-  res.send(api);
+app.post("/pdfconvert", pdfstorage.single("pdf"), function (req, res) {
+  let dataBuffer = fs.readFileSync(`./pdfuploads/${req.file.filename}`);
+  pdf(dataBuffer).then(function (data) {
+    console.log(data.text);
+    pdfobject.text=data.text;
+  });
 });
 
-//route to download PDF
-
-app.get("/downloads", (req, res) => {
-  const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
-  res.download(file);
-});
-app.get("/pdfreader",(req,res)=>{
-  res.render("pdfreader.ejs");
-})
-//404 route
-app.get("*", (req,res)=>{
+app.get("*", (req, res) => {
   res.render("404.ejs");
-})
-// Port to listen on
+});
+
+
 const PORT = 5000 || process.env.PORT;
 app.listen(PORT, () => {
   console.log(`Listening on port : ${PORT}`);
