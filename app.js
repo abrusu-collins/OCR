@@ -4,6 +4,7 @@ let app = express();
 const fs = require("fs");
 const multer = require("multer");
 const Tesseract = require("tesseract.js");
+const pdf = require('pdf-parse');
 
 // Using the public folder
 app.use(express.static(__dirname + "/public"));
@@ -17,6 +18,14 @@ const storage = multer.diskStorage({
     cb(null, file.originalname);
   },
 });
+
+
+
+
+
+
+
+const sssss = multer({ dest: 'pdfuploads/' });
 const upload = multer({ storage: storage }).single("myImage");
 
 // empty object
@@ -62,6 +71,13 @@ app.post("/uploads", (req, res) => {
   });
 });
 
+
+app.post('/pdfconvert', sssss.single('pdf'), function (req, res, next) {
+  // req.file is the `avatar` file
+  // req.body will hold the text fields, if there were any
+})
+
+
 // route for api json
 app.get("/uploads", (req, res) => {
   res.send(api);
@@ -73,7 +89,9 @@ app.get("/downloads", (req, res) => {
   const file = `${__dirname}/tesseract.js-ocr-result.pdf`;
   res.download(file);
 });
-
+app.get("/pdfreader",(req,res)=>{
+  res.render("pdfreader.ejs");
+})
 //404 route
 app.get("*", (req,res)=>{
   res.render("404.ejs");
