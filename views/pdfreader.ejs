@@ -76,11 +76,16 @@
             width:30%;
           display: flex;
           margin:auto;
+          margin-bottom: 30px;
+        }
+        .instructions{
+            text-align: center;
+            color:#ffffff;
         }
     </style>
     <h1 class="text-center mt-4 text-success" >PDF  To Speech</h1>
     <img src="imago.png" alt="text-to-speech">
-
+  <h3 class="instructions mb-4">Choose and upload a PDF file</h3>
     <form  action="/pdfconvert" method="post" class="form-group" enctype="multipart/form-data" id="form" >
         <input type="file" class="form-control form-control-lg mt-2 " id="textinput" name="pdf">
 

@@ -14,6 +14,17 @@ let form = document.getElementById("form");
 pitchgauge.addEventListener("input", pitchincrease, true);
 speedgauge.addEventListener("input", speedincrease, true);
 
+//uploaded successfully
+
+upload.addEventListener("click", (e)=>{
+  
+  if(!(input.value)){
+    alert("Choose a PDF file")
+  }
+  else{
+    alert("File uploaded successfully")
+  }
+})
 
 function speedincrease(e) {
   speedval.textContent = speedgauge.value;
@@ -23,6 +34,7 @@ function pitchincrease(e) {
   pitchval.textContent = pitchgauge.value;
 }
 
+//loading all voices
 var synth = window.speechSynthesis;
 function allvoices() {
   window.voices = synth.getVoices();
@@ -40,6 +52,7 @@ if (synth.onvoiceschanged !== undefined) {
   synth.onvoiceschanged = allvoices;
 }
 
+//speak 
 function speak(e) {
   e.preventDefault();
   
