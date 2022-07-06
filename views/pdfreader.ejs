@@ -82,9 +82,66 @@
             text-align: center;
             color:#ffffff;
         }
+         /*media queries*/
+         @media screen and (max-width:899px) {
+            .hero-img {
+                width:30%;
+            }
+
+            #speakcontrol{
+                margin-bottom: 30px;
+            }
+            #textinput,
+        .range-group,
+        #select {
+            width:60%;
+        }
+        @media screen and (max-width:751px) {
+            #speakcontrol{
+                width:50%;
+            } 
+        }
+        @media screen and (max-width:674px) {
+            .hero-img {
+                width:40%;
+            }
+
+            #speakcontrol{
+                margin-bottom: 40px;
+            }
+            #textinput,
+        .range-group,
+        #select {
+            width:70%;
+        }
+    }
+    @media screen and (max-width:578px) {
+        .hero-img {
+                width:50%;
+            }
+    }
+        @media screen and (max-width:440px) {
+            #speakcontrol{
+                width:70%;
+            }
+            .hero-img {
+                width:60%;
+            }
+            #textinput,
+        .range-group,
+        #select {
+            width:80%;
+        }
+        }
+        @media screen and (max-width:440px) {
+            #speakcontrol{
+                width:80%;
+            }
+        }
+        }
     </style>
     <h1 class="text-center mt-4 text-success" >PDF  To Speech</h1>
-    <img src="imago.png" alt="text-to-speech">
+    <img class="hero-img" src="imago.png" alt="text-to-speech">
   <h3 class="instructions mb-4">Choose and upload a PDF file</h3>
     <form  action="/pdfconvert" method="post" class="form-group" enctype="multipart/form-data" id="form" >
         <input type="file" class="form-control form-control-lg mt-2 " id="textinput" name="pdf">
