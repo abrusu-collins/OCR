@@ -11,3 +11,15 @@ body{
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width:848px) {
+    img{
+        width:50%;
+    }
+}
+
+@media screen and (max-width:504px) {
+    img{
+        width:70%;
+    }
+}
