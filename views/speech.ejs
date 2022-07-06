@@ -80,10 +80,59 @@
         margin-top: 100px;
         color: #fcfeff;
       }
+      /*media queries*/
+      @media screen and (max-width:899px) {
+            
+
+            #speakcontrol{
+                margin-bottom: 30px;
+            }
+            #textinput,
+        .range-group,
+        #select {
+            width:60%;
+        }
+        @media screen and (max-width:751px) {
+            #speakcontrol{
+                width:50%;
+            } 
+        }
+        @media screen and (max-width:674px) {
+          
+
+            #speakcontrol{
+                margin-bottom: 40px;
+            }
+            #textinput,
+        .range-group,
+        #select {
+            width:70%;
+        }
+    }
+    @media screen and (max-width:578px) {
+        
+    }
+        @media screen and (max-width:440px) {
+            #speakcontrol{
+                width:70%;
+            }
+            
+            #textinput,
+        .range-group,
+        #select {
+            width:80%;
+        }
+        }
+        @media screen and (max-width:440px) {
+            #speakcontrol{
+                width:80%;
+            }
+        }
+        }
     </style>
     <h1 class="text-center mt-4 text-success">Image To Speech</h1>
     <h3 class="instruction">
-      Text from image already loaded <br />
+      Text from image already loaded. <br />
       Click on read to listen to the audio.
     </h3>
 
