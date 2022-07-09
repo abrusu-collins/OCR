@@ -1,4 +1,3 @@
-
 //Selectors
 let input = document.getElementById("textinput");
 let convert = document.getElementById("convert");
@@ -7,27 +6,30 @@ let text = document.getElementById("text");
 let form = document.getElementById("form");
 // form.addEventListener("submit",ler ,true)
 
-$(document).ready(function() {
-  $("#form").submit(function() {
-      var data = new FormData($('#form')[0]);
-      $.ajax({
-          url:'/uploads',
-          type: 'POST',
-          contentType: false,
-          processData: false,
-          cache: false,
-          data: data,
-          success: function(res){
-              alert(res);
-          },
-          error: function(){
-              alert('Error: In sending the request!');
-          }
-      })
-      return false;
-  });
+$(document).ready(function () {
+  $("#form").submit(function () {
+    var data = new FormData($("#form")[0]);
+    var img = $('#input').val();
+    if(img){
+    $.ajax({
+      url: "/uploads",
+      type: "POST",
+      contentType: false,
+      processData: false,
+      cache: false,
+      data: data,
+      success: function (res) {
+        alert(res);
+      },
+      error: function () {
+        alert("Error: In sending the request!, refresh page if problem");
+      },
+    });
+    // return false;
+  }else{
+    alert("nothing added")
+  }});
 });
-
 
 // file conversion
 let dat;
@@ -43,8 +45,9 @@ let ApiCall = function () {
     });
 };
 
-function ler(){
-  
+function ler(e) {
+  e.preventDefault();
+  if(input.value){
   text.innerHTML = `<h3>Wait a second...</h3>`;
   let inter = setInterval(() => {
     ApiCall(), 10000;
@@ -71,13 +74,14 @@ function ler(){
     stat.style.display = "flex";
     text.innerHTML = " ";
   }, 10090);
- 
-}
+}else{
+  alert("nothing added")
+}}
 
 //event listener for convert
 convert.addEventListener(
-  "click",ler,
- 
+  "click",
+  ler,
   true
 );
 
