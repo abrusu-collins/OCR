@@ -1,4 +1,3 @@
-const e = require("express");
 
 //Selectors
 let input = document.getElementById("textinput");
@@ -7,6 +6,28 @@ let stat = document.getElementById("status");
 let text = document.getElementById("text");
 let form = document.getElementById("form");
 // form.addEventListener("submit",ler ,true)
+
+$(document).ready(function() {
+  $("#form").submit(function() {
+      var data = new FormData($('#form')[0]);
+      $.ajax({
+          url:'/uploads',
+          type: 'POST',
+          contentType: false,
+          processData: false,
+          cache: false,
+          data: data,
+          success: function(res){
+              alert(res);
+          },
+          error: function(){
+              alert('Error: In sending the request!');
+          }
+      })
+      return false;
+  });
+});
+
 
 // file conversion
 let dat;
@@ -22,8 +43,8 @@ let ApiCall = function () {
     });
 };
 
-function ler(e){
-  e.preventDefault();
+function ler(){
+  
   text.innerHTML = `<h3>Wait a second...</h3>`;
   let inter = setInterval(() => {
     ApiCall(), 10000;
@@ -50,15 +71,15 @@ function ler(e){
     stat.style.display = "flex";
     text.innerHTML = " ";
   }, 10090);
-  
+ 
 }
 
 //event listener for convert
-// convert.addEventListener(
-//   "click",
+convert.addEventListener(
+  "click",ler,
  
-//   true
-// );
+  true
+);
 
 //PDF conversion
 function PDFconversion() {
