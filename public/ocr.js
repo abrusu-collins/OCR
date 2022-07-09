@@ -68,7 +68,7 @@ function ler() {
 
 <div class="externals">
 <a onclick="PDFconversion()" class="btn btn-primary btn-sm">Get PDF</a>
-<a href="http://localhost:5000/speech" id="readtext" class="btn btn-primary btn-sm">Speech</a>
+<a href="hhttps://clisteocr.herokuapp.com/speech" id="readtext" class="btn btn-primary btn-sm">Speech</a>
 </div>
 
 </div>`;
