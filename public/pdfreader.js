@@ -82,7 +82,7 @@ if (synth.onvoiceschanged !== undefined) {
 function speak(e) {
   e.preventDefault();
   
-  fetch("http://localhost:5000/pdfconvert").then(
+  fetch("https://clisteocr.herokuapp.com/pdfconvert").then(
     (res)=>{
       return res.json()
     }
