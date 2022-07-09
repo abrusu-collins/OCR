@@ -9,7 +9,7 @@ let form = document.getElementById("form");
 $(document).ready(function () {
   $("#form").submit(function () {
     var data = new FormData($("#form")[0]);
-    var img = $('#input').val();
+    var img = $('#textinput').val();
     if(img){
     $.ajax({
       url: "/uploads",
@@ -25,10 +25,12 @@ $(document).ready(function () {
         alert("Error: In sending the request!, refresh page if problem");
       },
     });
-    // return false;
+
   }else{
-    alert("nothing added")
-  }});
+    alert("nothing dey")
+  }
+  return false;
+});
 });
 
 // file conversion
@@ -45,8 +47,7 @@ let ApiCall = function () {
     });
 };
 
-function ler(e) {
-  e.preventDefault();
+function ler() {
   if(input.value){
   text.innerHTML = `<h3>Wait a second...</h3>`;
   let inter = setInterval(() => {
