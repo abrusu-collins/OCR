@@ -14,12 +14,38 @@ let form = document.getElementById("form");
 pitchgauge.addEventListener("input", pitchincrease, true);
 speedgauge.addEventListener("input", speedincrease, true);
 
+$(document).ready(function () {
+  $("#form").submit(function () {
+    var data = new FormData($("#form")[0]);
+    var doc = $('#textinput').val();
+    if(doc){
+    $.ajax({
+      url: "/docconvert",
+      type: "POST",
+      contentType: false,
+      processData: false,
+      cache: false,
+      data: data,
+      success: function (res) {
+        alert(res);
+      },
+      error: function () {
+        alert("Error: In sending the request!, refresh page if problem");
+      },
+    });
+
+  }else{
+    alert("Choose a .doc or .docx file")
+  }
+  return false;
+});
+});
 //uploaded successfully
 
 upload.addEventListener("click", (e)=>{
   
   if(!(input.value)){
-    alert("Choose a PDF file")
+    alert("Choose a .doc or .docx file")
   }
   else{
     alert("File uploaded successfully")
