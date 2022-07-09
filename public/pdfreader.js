@@ -35,7 +35,7 @@ $(document).ready(function () {
     });
 
   }else{
-    alert("nothing dey")
+    alert("Choose a PDF file")
   }
   return false;
 });
