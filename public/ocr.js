@@ -27,7 +27,7 @@ $(document).ready(function () {
     });
 
   }else{
-    alert("nothing dey")
+    alert("Choose an Image file")
   }
   return false;
 });
@@ -76,7 +76,7 @@ function ler() {
     text.innerHTML = " ";
   }, 10090);
 }else{
-  alert("nothing added")
+  alert("Choose an Image file")
 }}
 
 //event listener for convert
