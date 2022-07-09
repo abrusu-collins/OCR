@@ -126,6 +126,8 @@
       method="post"
       action="/uploads"
       enctype="multipart/form-data"
+     id="form"
+     onsubmit="return ler();"
     >
       <input
         type="file"
@@ -133,7 +135,7 @@
         id="textinput"
         name="myImage"
       />
-      <button type="submit" class="btn btn-outline-primary mt-4" id="convert">
+      <button type="submit" class="btn btn-outline-primary mt-4" id="convert" >
         Convert
       </button>
     </form>
@@ -142,7 +144,7 @@
     <div id="text"></div>
 
     <div class="invinsible"></div>
-
+    <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.debug.js"></script>
     <script src="ocr.js"></script>
   </body>

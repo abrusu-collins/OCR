@@ -1,13 +1,17 @@
+const e = require("express");
+
 //Selectors
 let input = document.getElementById("textinput");
 let convert = document.getElementById("convert");
 let stat = document.getElementById("status");
 let text = document.getElementById("text");
+let form = document.getElementById("form");
+// form.addEventListener("submit",ler ,true)
 
 // file conversion
 let dat;
 
-//fuunction for API call
+//function for API call
 let ApiCall = function () {
   fetch("http://localhost:5000/uploads")
     .then((response) => {
@@ -18,39 +22,43 @@ let ApiCall = function () {
     });
 };
 
-//event listener for convert
-convert.addEventListener(
-  "click",
-  (e) => {
-    text.innerHTML = `<h3>Wait a second...</h3>`;
-    let inter = setInterval(() => {
-      ApiCall(), 10000;
-    });
+function ler(e){
+  e.preventDefault();
+  text.innerHTML = `<h3>Wait a second...</h3>`;
+  let inter = setInterval(() => {
+    ApiCall(), 10000;
+  });
 
-    setInterval(() => {
-      stat.innerHTML = !(dat.progress * 100)
-        ? `<div class="load"><h3>Converting</h3></div>`
-        : dat.progress * 100 < 100
-        ? `<div class="load">
-  <h3> Converting...</h3>
-  <img  src="./animation.gif" alt="load"/>
-  <h3>${Math.trunc(dat.progress * 100)} %</h3>
-   </div>`
-        : `<div class="load">
-  <h3>Done!</h3>
+  setInterval(() => {
+    stat.innerHTML = !(dat.progress * 100)
+      ? `<div class="load"><h3>Converting...</h3></div>`
+      : dat.progress * 100 < 100
+      ? `<div class="load">
+<h3> Converting...</h3>
+<img  src="./animation.gif" alt="load"/>
+<h3>${Math.trunc(dat.progress * 100)} %</h3>
+ </div>`
+      : `<div class="load">
+<h3>Done!</h3>
+
+<div class="externals">
+<a onclick="PDFconversion()" class="btn btn-primary btn-sm">Get PDF</a>
+<a href="http://localhost:5000/speech" id="readtext" class="btn btn-primary btn-sm">Speech</a>
+</div>
+
+</div>`;
+    stat.style.display = "flex";
+    text.innerHTML = " ";
+  }, 10090);
   
-  <div class="externals">
-  <a onclick="PDFconversion()" class="btn btn-primary btn-sm">Get PDF</a>
-  <a href="http://localhost:5000/speech" id="readtext" class="btn btn-primary btn-sm">Speech</a>
- </div>
-  
-  </div>`;
-      stat.style.display = "flex";
-      text.innerHTML = " ";
-    }, 10090);
-  },
-  true
-);
+}
+
+//event listener for convert
+// convert.addEventListener(
+//   "click",
+ 
+//   true
+// );
 
 //PDF conversion
 function PDFconversion() {
