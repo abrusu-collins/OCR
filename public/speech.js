@@ -14,7 +14,7 @@ speedgauge.addEventListener("input", speedincrease, true);
 let speechData;
 
 window.onload = function () {
-  fetch("http://localhost:5000/uploads")
+  fetch("https://clisteocr.herokuapp.com/uploads")
     .then((res) => {
       return res.json();
     })
