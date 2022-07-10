@@ -1,7 +1,6 @@
 # OCR
-This is part of wordbox.
+This is part of wordbox(https://github.com/abrusu-collins/WordBox).
 It contains: 
-1. Img to  speech
-2. Img to PDF 
-3. PDF to speech
-4. Word doc( .doc and .docx) to speech
+1. Image text extractor
+2. PDF readeer
+4. Word doc( .doc and .docx) reader
