@@ -38,7 +38,7 @@ let dat;
 
 //function for API call
 let ApiCall = function () {
-  fetch("http://localhost:5000/uploads",{mode:"cors"}
+  fetch("https://clisteocr.herokuapp.com/uploads",{mode:"cors"}
   )
     .then((response) => {
       return response.json();
