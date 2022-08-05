@@ -4,7 +4,7 @@ let convert = document.getElementById("convert");
 let stat = document.getElementById("status");
 let text = document.getElementById("text");
 let form = document.getElementById("form");
-form.addEventListener("submit",ler ,true)
+// form.addEventListener("submit",ler ,true)
 
 $(document).ready(function () {
   $("#form").submit(function () {
