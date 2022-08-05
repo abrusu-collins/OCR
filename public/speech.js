@@ -52,7 +52,7 @@ function speak(e) {
   e.preventDefault();
 
   if (speechData === undefined) {
-    alert("Choose a txt file from your device");
+    alert("For some reasons, Image was not loaded, restart the process");
   } else {
     var newwindow = window.open("", "", "width=500, height=500");
     newwindow.document.write(`<pre>${speechData}</pre>`);
