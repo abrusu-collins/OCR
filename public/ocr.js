@@ -38,7 +38,11 @@ let dat;
 
 //function for API call
 let ApiCall = function () {
-  fetch("https://clisteocr.herokuapp.com/uploads",{mode:"cors"})
+  fetch("https://clisteocr.herokuapp.com/uploads",{mode:"cors",
+  headers: {
+    'Access-Control-Allow-Origin':'*'
+  }}
+  )
     .then((response) => {
       return response.json();
     })
